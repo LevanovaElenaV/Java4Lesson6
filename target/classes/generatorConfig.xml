@@ -1,0 +1,33 @@
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry  location="${user.home}/.m2/repository/org/postgresql/postgresql/42.5.0/postgresql-42.5.0.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://ec2-34-236-87-247.compute-1.amazonaws.com:5432/dafahgr1fd8l8o"
+                        userId="fqculvwjkorath"
+                        password="b04dbbedfea917064011fea6411933efe12cb3bf8c9dc85ded3a2bee3cc9ec63">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.geekbrains.db.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.geekbrains.db.mapper.xml" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.geekbrains.db.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="categories"/>
+        <table tableName="products"/>
+
+    </context>
+</generatorConfiguration>
